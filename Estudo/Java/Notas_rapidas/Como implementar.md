@@ -1,0 +1,1 @@
+Pesquisar sobre cada um dos assuntos pertinentes e preencher os itens das notas

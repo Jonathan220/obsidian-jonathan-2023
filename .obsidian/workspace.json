@@ -1,0 +1,178 @@
+{
+  "main": {
+    "id": "4bdce32800017302",
+    "type": "split",
+    "children": [
+      {
+        "id": "b565a1e796fd486e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3731cf1930a3385c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Estudo/Java/Microsserviços/Spring Actuator.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7b4df2d53deafd8b",
+    "type": "split",
+    "children": [
+      {
+        "id": "b63c6903d4546c48",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a114ba219682f1a4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c95ad9fa832c0cc5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5c11d95e62b9bec8",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 267.5
+  },
+  "right": {
+    "id": "3cd45523995da3ba",
+    "type": "split",
+    "children": [
+      {
+        "id": "463b479b6c7d49cf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79fc56da4b4b0b90",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Estudo/Java/Microsserviços/Spring Actuator.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bae53bbadd01bc9f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Estudo/Java/Microsserviços/Spring Actuator.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ba97cc046d6488a7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "222a8113923c7135",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Estudo/Java/Microsserviços/Spring Actuator.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "canvas:Criar novo canvas": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "3731cf1930a3385c",
+  "lastOpenFiles": [
+    "Estudo/Java/Microsserviços/Spring Actuator.md",
+    "Trabalho/Documentação/Contatos AWS.md",
+    "Pessoal/Lista de compras.md",
+    "Pasted image 20230228084747.png",
+    "Estudo/Java/Microsserviços/SOA.md",
+    "Estudo/Java/Microsserviços/Falácias da computação distribuida.md",
+    "Estudo/Java/Microsserviços/Microsserviço.md",
+    "Estudo/Java/Microsserviços/Principio da responsabilidade unica.md",
+    "Estudo/Java/Microsserviços/Principio do contexto limitado.md",
+    "Estudo/Java/Microsserviços/Regra das duas pizzas.md",
+    "Estudo/Java/Microsserviços/beans.md",
+    "Estudo/Java/Microsserviços/BeanFactory.md",
+    "Pasted image 20230226131837.png",
+    "Estudo/Imagens/Pasted image 20220921081134.png.md",
+    "Decomposição funcional.md",
+    "Estudo/Imagens",
+    "Estudo/Imagens/Pasted image 20230226130211.png",
+    "Estudo/Imagens/Pasted image 20230226125816.png",
+    "Estudo/Java/Microsserviços/Circuit breaks.md",
+    "Estudo/Java/Microsserviços/How to/Fazer uso do properties no código.md",
+    "Estudo/Java/insights/Aplicação completa.md",
+    "2023-02-22.md",
+    "Estudo/Plano-21-02-2023.md",
+    "Estudo/Java/Notas_rapidas/Notas_antigas/Microsserviços - nota antiga.md",
+    "Trabalho/Pendencias/Pendencia - 2023-02-22.md"
+  ]
+}
