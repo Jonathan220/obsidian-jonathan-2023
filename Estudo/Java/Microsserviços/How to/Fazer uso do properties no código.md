@@ -1,6 +1,6 @@
-#microsserviços 
+#microsserviços #springboot 
 
-É Possível fazer uso de váriaveis criadas no properties de um microsserviço no código da aplicação.
+É Possível fazer uso de variáveis criadas no properties de um microsserviço no código da aplicação.
 Existem duas maneiras:
 
 1. Através do uso da anotação @Value

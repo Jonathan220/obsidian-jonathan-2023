@@ -1,0 +1,25 @@
+- [ ] final fantasy
+	- [x] farmar items melhores de ninja
+	- [ ] mudar cor do chocobo
+	- [ ] levelar storm
+	- [ ] levelar tribal
+	- [x] levelar chocobo de corrida
+	- [ ] farmar mgp
+- [ ] adquiri coisas
+	- [ ] criar stock de jogos
+	- [ ] obter memória
+	- [ ] obter ssd
+- [ ] path of exile
+	- [x] conectar conta do twitch
+	- [x] asistir evento
+	- [ ] dark pact - principal escolha, mas tem que ser tank- experimental, não dando certo vou para uma das opções abaixo - minion dá muito trabalho
+	- [ ] righteous fire - sem opção melhor
+	- [ ] ed/contagion - tank - interessante
+	- [ ] arc totem - simples
+- [ ] pessoal
+	- [x] adquirir limpeza facial
+	- [x] agua micelar
+	- [ ] shampoo ou óleo para barba
+	- [x] azitromicina
+	- [x] pomada
+	- [ ] credito no celular - prezao

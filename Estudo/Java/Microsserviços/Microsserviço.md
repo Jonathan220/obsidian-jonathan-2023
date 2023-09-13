@@ -28,7 +28,7 @@ Os microsserviços podem ser construídos fazendo uso do flameworks como spring 
 Em javascript se faz uso do [[node.js]] e [[express.js]].
 
 ## Onde é implementado
-Os microsserviços podem rodar como uma aplicação normal roda. No entanto eles irão se comunicar entre si para distribuirem os seus processamentos. Podem também serem implementados para rodarem dentro de [[containers]] do [[docker]].
+Os microsserviços podem rodar como uma aplicação normal roda. No entanto eles irão se comunicar entre si para distribuirem os seus processamentos. Podem também serem implementados para rodarem dentro de [[containers]] do [[Docker]].
 
 ## Quando deve ser implementado
 Os microsserviços atendem bem sistemas que precisam ter alta disponiblidade e escalabilidade. A arquitetura facilita o desenvolvimento de multiplos serviços ao mesmo tempo, o que aumenta a produtividade da equipe.

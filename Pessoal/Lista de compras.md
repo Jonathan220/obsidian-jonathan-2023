@@ -5,8 +5,9 @@
 - [x] Mesa para computador de jogos
 - [ ] Mesa para Jefferson
 - [ ] Mesa para jonathan
-- [ ] Guarda roupa
+- [x] Guarda roupa
 - [ ] Cama para Vinicius
+- [ ] cama para mim
 - [ ] Estante de livros 1
 - [ ] Estante de livros 2
 - [ ] Gaveteiro
@@ -15,6 +16,7 @@
 - [ ] Geladeira
 - [ ] Telefone sem fio
 - [ ] Televisão para o quarto
+- [ ] ar condicionado
 - [ ] 
 
 ## Equipamentos Eletronicos
@@ -24,23 +26,35 @@
 - [ ] Teclado para Gamer
 - [ ] Teclado para trabalho
 - [ ] Tela maior para Gamer
-- [ ] Mouse gamer
+- [x] Mouse gamer
 - [ ] Celular mais moderno
+- [x] cadeira gamer
+- [ ] suporte notebook
+- [x] memória de 8gb
+- [x] ssd
+- [ ] joystick
+- [ ] fone sem fio para vinicius
 
 ## pessoal
 
 - [ ] Relógio
-- [ ] cuecas
-- [ ] bermudas para casa/academia
-- [ ] camisas para academia
+- [ ] cuecas - mais caras
+- [x] bermudas para casa/academia
+- [ ] camisas para academia - diferenciar do jefferson
 - [ ] bermudas para sair
 - [ ] calça jeans
 - [ ] roupa para sair
 - [ ] pulseira
 - [ ] cordão
-- [ ] perfume
+- [x] perfume
 - [ ] Mochila
 
 ## Utensilios de cozinha
-
+- [ ] liquidificador
+- [ ] facas
+- [ ] talheres
+- [ ] panelas
+- [ ] panela antiaderente
+- [ ] pincel
+- [ ] 
 

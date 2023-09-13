@@ -1,4 +1,4 @@
-#microsserviços 
+#microsserviços #Monitoramento #springboot 
 
 Biblioteca do spring que permite a obtenção de métricas e status da aplicação. Essa biblioteca também facilita a coleta de dados por parte de outras aplicações de monitoramento.
 
@@ -48,8 +48,55 @@ management:
 Exibe o status da aplicação. Se a aplicação estiver saudável e executando sem qualquer tipo de interrupção os status será UP. Para acessar o endpoint digite **/actuator/health**.
 
 ![[Pasted image 20230226125816.png]]
+By default, Spring Boot defines four different values as the health Status:
 
-## Endepoint metrics
+-   _UP —_ The component or subsystem is working as expected
+-   _DOWN_ — The component is not working
+-   _OUT_OF_SERVICE_ — The component is out of service temporarily
+-   _UNKNOWN_ — The component state is unknown
+
+**The health status affects the HTTP status code of the health endpoint**. By default, Spring Boot maps the _DOWN_, and _OUT_OF_SERVICE_ states to throw a 503 status code. On the other hand, _UP_ and any other unmapped statuses will be translated to a 200 OK status code.
+
+Para customizar o mapeamento dos endpoint de acordo com os status que desejamos, nós podemos configurar no properties:
+
+```YAML
+management:
+	endpoint:
+		health:
+			status:
+				http-mapping.down: 500
+				http-mapping.out_of_service: 503
+				http-mapping.warning: 500
+```
+
+Também podemos implementar essas mudanças através de código:
+
+```java
+@Component
+public class CustomStatusCodeMapper implements HttpCodeStatusMapper {
+
+    @Override
+    public int getStatusCode(Status status) {
+        if (status == Status.DOWN) {
+            return 500;
+        }
+        
+        if (status == Status.OUT_OF_SERVICE) {
+            return 503;
+        }
+        
+        if (status == Status.UNKNOWN) {
+            return 500;
+        }
+
+        return 200;
+    }
+}
+```
+
+
+
+## Endpoint metrics
 
 Lista todas as metricas disponíveis para rastrear a aplicação. Basta digitar **/actuator/metrics**.
 
@@ -79,7 +126,7 @@ Outros endpoints disponíveis:
 -   _/info_ returns general information. It might be custom data, build information or details about the latest commit.
 -   _/liquibase_ behaves like _/flyway_ but for [[Liquibase]].
 -   _/logfile_ returns ordinary application logs.
--   _/loggers_ enables us to query and modify the [[logging level]] of our application.
+-   _/loggers_ enables us to query and modify the [[|logging level]] of our application.
 -   _/metrics_ details metrics of our application. This might include generic metrics as well as custom ones.
 -   _/prometheus_ returns metrics like the previous one, but formatted to work with a [[Prometheus]] server.
 -   _/scheduledtasks_ provides details about every scheduled task within our application.
@@ -98,6 +145,9 @@ Cada indicador de saúde retorna um status que indica se o componente está saud
 O Spring Boot fornece um conjunto de indicadores de saúde integrados que cobrem casos de uso comuns, como verificar a conectividade do banco de dados, espaço em disco e uso da CPU. Você também pode criar indicadores de saúde personalizados para fornecer informações sobre aspectos específicos de sua aplicação.
 
 Os indicadores de saúde são expostos por meio de um ponto de extremidade HTTP `/actuator/health`, que retorna uma resposta JSON contendo o status de todos os indicadores de saúde registrados. Este ponto de extremidade pode ser usado por ferramentas de monitoramento para verificar periodicamente a saúde da aplicação e alertar os administradores se houver algum problema detectado.
+
+>[!attention]- Atenção
+>Health Indicators devem ser utilizados para verificar se a aplicação consegue se comunicar com outros componentes como um banco de dados [[Cassandra]] e uma aplicação de fila como o [[Apache Kafka]]. Se a comunicação falha ou fica lenta então temos uma aplicação não saudável que deveria receber atenção, em outras palavras estes indicadores devem ser utilizados para reportar a saúde de diferentes componentes so sistema. 
 
 ## Bult-in health indicators
 
@@ -122,7 +172,10 @@ Here are some of the built-in health indicators provided by Spring Boot:
 8.  SolrHealthIndicator: Checks the health of [[Apache Solr]].
    
 9.  ElasticsearchHealthIndicator: Checks the health of [[Elasticsearch]].
-   
+
+> [!attention]
+> Alguns built-in health só ficam disponíveis quando certas condições são alcançadas como é o caso do **CassandraHealthIndicator**, que só deve aparecer em caso do banco cassandra estiver sendo usado com a aplicação 
+ 
 
 These built-in health indicators provide a quick and easy way to check the health of your application and its dependencies without having to write any custom code. You can also create your own custom health indicators, as I described earlier, to check the health of other components in your application.
 
@@ -205,6 +258,46 @@ If the health check succeeds, we return a `Health` object with an "UP" status an
 
 Once you've created your custom health indicator, it will be automatically registered with Spring Boot's health endpoint `/actuator/health` and included in the JSON response. You can also use the `@HealthIndicator` annotation to give your custom health indicator a specific name that will be included in the response.
 
+
+> [!attention]- atenção
+> **In reactive applications, however, we should register a bean of type [[ReactiveHealthIndicator]]**. The reactive _health()_ method returns a [[Mono<Health>]] instead of a simple _Health_. Other than that, other details are the same for both web application types.
+
+>[!info]- Informação adicional
+>Você pode acessar o seu health indicator customizado apenas digitando o nome da classe sem a parte **HealthIndicator** como no exemplo: `http://localhost:8080/actuator/health/custom`. Por padrão o actuator nomeia o seu health indicator com o nome da classe sem o sufixo **HealthIndicator**, para mudar isso você pode colocar no **@component** o nome que deseja dar ao endpoint: `@component("random")`.
+
+>[!Info]- Informação adicional
+>Podemos adicionar qualquer outras informações no objeto **Health** retornado pela classe customizada do **healthIndicator**, para isso basta adicionar no método **withDetails** um par de chave e valor. No exemplo acima adicionamos o par `message` e a `mensagem enviada`, mas podemos adicionar mais de um **withDetails** e com outros valores. 
+
+>[!Example]- Examplo:
+>
+```java
+public Health health() {
+    double chance = ThreadLocalRandom.current().nextDouble();
+    Health.Builder status = Health.up();
+    if (chance > 0.9) {
+        status = Health.down();
+    }
+
+    return status
+      .withDetail("chance", chance)
+      .withDetail("strategy", "thread-local")
+      .build();
+}
+```
+
+> [!info]- 
+> Também podemos alcançar o mesmo resultado fazendo uso do objeto **map<String, Object>** para **withDetails(map)**.
+
+>[!Example]- Exemplo
+>
+```java
+Map<String, Object> details = new HashMap<>();
+details.put("chance", chance);
+details.put("strategy", "thread-local");
+        
+return status.withDetails(details).build();
+```
+
 ## Visualizando detalhes do health indicator
 
 Para poder visualizar os detalhes de um health indicator é necessário habilitar no properties como no código abaixo:
@@ -227,3 +320,67 @@ Também será possível visualizar e acessar os built-in health indicators dispo
 
 ![[Pasted image 20230228084747.png]]
 
+## Desativando o indicator
+Para desativar um indicator em particular precisamos adicioanar a configuração abaixo no properties.
+
+```YAML
+management:
+	health:
+		random:
+			enabled: false
+```
+
+Em seguida configurar na classe a anotação abaixo:
+
+```java
+@Component
+@ConditionalOnEnabledHealthIndicator("random")
+public class RandomHealthIndicator implements HealthIndicator { 
+    // omitted
+}
+```
+
+Com estas configurações, ao acessar o endpoint do indicator será apresentado a mensagem ==404 Not Found==.
+
+## Acessando o actuator através do jmx
+
+O Spring Boot Actuator fornece endpoints para monitorar e gerenciar a aplicação, como `/health`, `/metrics` e `/env`. Esses endpoints são expostos como [[beans JMX|MBean]], o que significa que podem ser monitorados e gerenciados por meio do protocolo [[JMX]].
+
+Para expor as informações de monitoramento do Actuator como MBeans, basta adicionar a dependência `spring-boot-starter-actuator` ao projeto e definir a propriedade `spring.jmx.enabled=true` no arquivo `application.properties`.
+
+Por exemplo, para expor as informações de saúde (`/health`) como um MBean, adicione a seguinte configuração ao arquivo `application.properties`:
+
+```YAML
+spring:
+	jmx:
+		enabled: true
+management:
+	endpoints:
+		jmx:
+			exposure:
+				include: 
+				- health
+```
+
+Isso expõe as informações de saúde como um [[beans JMX|MBean]] com o nome `org.springframework.boot:type=Endpoint,name=HealthEndpoint`. Você pode usar um cliente [[JMX]] para se conectar ao servidor [[JMX]] e monitorar o estado de saúde da aplicação.
+
+Além disso, o Actuator também permite que você customize o nome e a descrição do [[beans JMX|MBean]]. Por exemplo, para definir o nome do [[beans JMX|MBean]] como `myapp:type=Health`, adicione a seguinte configuração ao arquivo `application.properties`:
+
+```YAML
+spring:
+	jmx:
+		enabled: true
+management:
+	endpoints:
+		jmx:
+			exposure:
+				include:
+				- health
+		unique-names: true
+		static-names: 
+		 - "myapp:type=Health"
+```
+
+Com essa configuração, o [[beans JMX |MBean]] de saúde será registrado com o nome `myapp:type=Health`.
+
+Dessa forma, é possível expor informações de monitoramento do Actuator como MBeans e monitorá-las por meio do protocolo [[JMX]].
