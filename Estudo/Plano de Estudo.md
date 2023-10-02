@@ -67,7 +67,7 @@
  - Curso udemy SOLID- https://www.udemy.com/course/curso-design-patterns-java/ 
  - Curso udemy desing Patterns- https://www.udemy.com/course/padroes-de-projeto-em-java-na-pratica/
  - DDD - Livro
- - Curson udemy para arquitetura, DDD, TDD. CQRS: https://www.udemy.com/course/microservicos-com-hexagonal-architecture-ddd-tdd-cqrs-solid/
+ - Curso udemy para arquitetura, DDD, TDD. CQRS: https://www.udemy.com/course/microservicos-com-hexagonal-architecture-ddd-tdd-cqrs-solid/
  
 ### Arquitetura de Software
 - Curso udemy para arquitetura, DDD, TDD. CQRS: https://www.udemy.com/course/microservicos-com-hexagonal-architecture-ddd-tdd-cqrs-solid/

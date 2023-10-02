@@ -1,7 +1,7 @@
 - [ ] final fantasy
 	- [x] farmar items melhores de ninja
-	- [ ] mudar cor do chocobo
-	- [ ] levelar storm
+	- [x] mudar cor do chocobo
+	- [x] levelar storm
 	- [ ] levelar tribal
 	- [x] levelar chocobo de corrida
 	- [ ] farmar mgp
